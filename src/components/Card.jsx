@@ -1,7 +1,7 @@
 import { Container, Flex, Image, Text } from '@chakra-ui/react';
 import React from 'react';
 
-const Card = () => {
+const Card = ({ data }) => {
   return (
     <Flex
       bg="#FFFFFF"
@@ -15,8 +15,8 @@ const Card = () => {
         boxSize="6.25rem"
         borderRadius="10px"
         objectFit="cover"
-        src="https://bit.ly/dan-abramov"
-        alt="Dan Abramov"
+        src={data.image}
+        alt={data.title}
       />
       <Container>
         <Text
@@ -26,7 +26,7 @@ const Card = () => {
           lineHeight="26.59px"
           color="#656C7E"
         >
-          Take a quiz!
+          {data.title}
         </Text>
         <Text
           fontSize="xl"
@@ -34,7 +34,7 @@ const Card = () => {
           fontWeight="500"
           lineHeight="26.59px"
         >
-          Learn and earn $CKBt
+          {data.description}
         </Text>
       </Container>
     </Flex>
