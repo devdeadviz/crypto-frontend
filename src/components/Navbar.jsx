@@ -6,6 +6,7 @@ const Navbar = () => {
   return (
     <Box
       as="nav"
+      bg="#FFFFFF"
       display="flex"
       alignItems="center"
       justifyContent="space-between"
