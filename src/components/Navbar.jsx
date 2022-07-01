@@ -1,7 +1,6 @@
 import { Box, IconButton, Image } from '@chakra-ui/react';
-import { ColorModeSwitcher } from '../../ColorModeSwitcher';
+import { ColorModeSwitcher } from '../ColorModeSwitcher';
 import { SearchIcon, HamburgerIcon } from '@chakra-ui/icons';
-import './Navbar.css';
 
 const Navbar = () => {
   return (
