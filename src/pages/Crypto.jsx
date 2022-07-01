@@ -1,4 +1,12 @@
-import { Box, HStack } from '@chakra-ui/react';
+import { StarIcon } from '@chakra-ui/icons';
+import {
+  Box,
+  Heading,
+  HStack,
+  Tag,
+  TagLabel,
+  TagLeftIcon,
+} from '@chakra-ui/react';
 import { Card } from '../components';
 
 const Crypto = () => {
@@ -28,6 +36,59 @@ const Crypto = () => {
         {cardData.map(data => (
           <Card key={data.id} data={data} />
         ))}
+      </HStack>
+      <Heading as="h2" fontSize="24px" fontFamily="Inter" my={5}>
+        Top 100 Cryptocurrencies by Market Cap
+      </Heading>
+      <HStack spacing="16px">
+        <Tag size="94px" p="8px">
+          <TagLeftIcon as={StarIcon} />
+          <TagLabel
+            size="12px"
+            fontFamily="Inter"
+            fontWeight="500"
+            lineHeight="18px"
+          >
+            Favourites
+          </TagLabel>
+        </Tag>
+        <Tag size="94px" p="8px">
+          <TagLabel
+            size="12px"
+            fontFamily="Inter"
+            fontStyle="normal"
+            fontWeight="600"
+            lineHeight="18px"
+            color="#3861FB"
+          >
+            CryptoCurrencies
+          </TagLabel>
+        </Tag>
+        <Tag size="94px" p="8px">
+          <TagLabel
+            size="12px"
+            fontFamily="Inter"
+            fontStyle="normal"
+            fontWeight="600"
+            lineHeight="18px"
+            color=" #5B667C"
+            letterSpacing="-0.03em"
+          >
+            DeFi
+          </TagLabel>
+        </Tag>
+        <Tag size="94px" p="8px">
+          <TagLabel
+            size="12px"
+            fontFamily="Inter"
+            fontStyle="normal"
+            fontWeight="600"
+            lineHeight="18px"
+            color=" #5B667C"
+          >
+            NFTs & Collectibles
+          </TagLabel>
+        </Tag>
       </HStack>
     </Box>
   );
