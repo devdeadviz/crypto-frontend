@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import { ChakraProvider, Box, theme } from '@chakra-ui/react';
 import { Navbar } from './components';
 import { Crypto } from './pages';
