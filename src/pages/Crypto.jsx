@@ -25,9 +25,13 @@ import {
   SliderFilledTrack,
   Flex,
 } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import { Card } from '../components';
+import { getCoins } from '../services';
 
 const Crypto = () => {
+  const [cryptoCoinsData, setCryptoCoinsData] = useState([]);
+
   const cardData = [
     {
       id: '1',
@@ -48,8 +52,16 @@ const Crypto = () => {
       image: '/assets/image3.svg',
     },
   ];
+
+  useEffect(() => {
+    (async () => {
+      const data = await getCoins();
+      setCryptoCoinsData(data);
+    })();
+  }, []);
+
   return (
-    <Box pt="35px" height="100vh">
+    <Box pt="35px" minHeight="100vh">
       <HStack spacing="24px">
         {cardData.map(data => (
           <Card key={data.id} data={data} />
@@ -148,7 +160,6 @@ const Crypto = () => {
                 <Box
                   as="span"
                   fontFamily="Arial"
-                  isNumeric
                   fontStyle="normal"
                   fontWeight="700"
                   fontSize="11px"
@@ -161,7 +172,6 @@ const Crypto = () => {
                 <ArrowDownIcon color="#0052FE" width="12px" height="9px" />
               </Th>
               <Th
-                isNumeric
                 fontFamily="Arial"
                 fontStyle="normal"
                 fontWeight="700"
@@ -172,7 +182,6 @@ const Crypto = () => {
                 7D
               </Th>
               <Th
-                isNumeric
                 fontFamily="Arial"
                 fontStyle="normal"
                 fontWeight="700"
@@ -183,7 +192,6 @@ const Crypto = () => {
                 MARKET CAP
               </Th>
               <Th
-                isNumeric
                 fontFamily="Arial"
                 fontStyle="normal"
                 fontWeight="700"
@@ -194,7 +202,6 @@ const Crypto = () => {
                 VOLUME(24H)
               </Th>
               <Th
-                isNumeric
                 fontFamily="Arial"
                 fontStyle="normal"
                 fontWeight="700"
@@ -208,141 +215,155 @@ const Crypto = () => {
             </Tr>
           </Thead>
           <Tbody>
-            <Tr>
-              <Td>
-                <Flex alignItems="center">
-                  <StarIcon height="13px" width="13px" mr="2rem" />
-                  <Box
-                    as="span"
+            {cryptoCoinsData.map(
+              (
+                {
+                  name,
+                  image,
+                  symbol,
+                  current_price,
+                  price_change_percentage_24h,
+                  price_change_percentage_7d_in_currency,
+                  market_cap,
+                  total_volume,
+                  circulating_supply,
+                },
+                index
+              ) => (
+                <Tr key={index}>
+                  <Td>
+                    <Flex alignItems="center">
+                      <StarIcon height="13px" width="13px" mr="2rem" />
+                      <Box
+                        as="span"
+                        fontFamily="Inter"
+                        fontStyle="normal"
+                        fontWeight="500"
+                        fontSize="15px"
+                        lineHeight="21px"
+                        color="#808A9D"
+                      >
+                        {index + 1}
+                      </Box>
+                    </Flex>
+                  </Td>
+                  <Td>
+                    <Avatar
+                      size="xs"
+                      name={name}
+                      src={image}
+                    />
+                    <Box
+                      as="span"
+                      width="max-content"
+                      fontFamily="Inter"
+                      fontStyle="normal"
+                      fontWeight="600"
+                      fontSize="14px"
+                      lineHeight="24px"
+                      color="#222531"
+                      mx={2}
+                    >
+                      {name}
+                    </Box>
+                    <Box
+                      as="span"
+                      width="max-content"
+                      fontFamily="Inter"
+                      fontStyle="normal"
+                      fontWeight="500"
+                      fontSize="14px"
+                      lineHeight="24px"
+                      color="#808A9D"
+                    >
+                      {symbol.toUpperCase()}
+                    </Box>
+                  </Td>
+                  <Td
                     fontFamily="Inter"
                     fontStyle="normal"
                     fontWeight="500"
-                    fontSize="15px"
-                    lineHeight="21px"
-                    color="#808A9D"
+                    fontSize="14px"
+                    lineHeight="22px"
+                    color="#000000"
                   >
-                    1
-                  </Box>
-                </Flex>
-              </Td>
-              <Td>
-                <Avatar
-                  size="xs"
-                  name="Dan Abrahmov"
-                  src="https://bit.ly/dan-abramov"
-                />
-                <Box
-                  as="span"
-                  width="max-content"
-                  fontFamily="Inter"
-                  fontStyle="normal"
-                  fontWeight="600"
-                  fontSize="14px"
-                  lineHeight="24px"
-                  color="#222531"
-                  mx={2}
-                >
-                  Bitcoin
-                </Box>
-                <Box
-                  as="span"
-                  width="max-content"
-                  fontFamily="Inter"
-                  fontStyle="normal"
-                  fontWeight="500"
-                  fontSize="14px"
-                  lineHeight="24px"
-                  color="#808A9D"
-                >
-                  BTC
-                </Box>
-              </Td>
-              <Td
-                isNumeric
-                fontFamily="Inter"
-                fontStyle="normal"
-                fontWeight="500"
-                fontSize="14px"
-                lineHeight="22px"
-                color="#000000"
-              >
-                $20,055.25
-              </Td>
-              <Td color="#EA3943">
-                <TriangleDownIcon width="10px" height="6px" />
-                <Box
-                  as="span"
-                  fontFamily="Inter"
-                  fontStyle="normal"
-                  fontWeight="600"
-                  fontSize="13px"
-                  lineHeight="16px"
-                >
-                  0.65%
-                </Box>
-              </Td>
-              <Td color="#16C784" textAlign="end">
-                <TriangleUpIcon width="10px" height="6px" />
-                <Box
-                  as="span"
-                  fontFamily="Inter"
-                  fontStyle="normal"
-                  fontWeight="600"
-                  fontSize="13px"
-                  lineHeight="16px"
-                >
-                  0.65%
-                </Box>
-              </Td>
-              <Td
-                isNumeric
-                fontFamily="Inter"
-                fontStyle="normal"
-                fontWeight="500"
-                fontSize="14px"
-                lineHeight="22px"
-              >
-                $1,502,989,963,439,782
-              </Td>
-              <Td
-                isNumeric
-                fontFamily="Inter"
-                fontStyle="normal"
-                fontWeight="500"
-                letterSpacing="-0.035em"
-              >
-                <Box fontSize="14px" lineHeight="22px">
-                  $51,502,989,963,439
-                </Box>
-                <Box fontSize="12px" lineHeight="15px">
-                  932,071 BTC
-                </Box>
-              </Td>
-              <Td textAlign="end">
-                <Box
-                  fontSize="14px"
-                  lineHeight="22px"
-                  fontFamily="Inter"
-                  fontStyle="normal"
-                  fontWeight="500"
-                  letterSpacing="-0.035em"
-                >
-                  18,648,248 BTC
-                </Box>
-                <Slider
-                  aria-label="slider-ex-1"
-                  colorScheme="teal"
-                  defaultValue={30}
-                >
-                  <SliderTrack>
-                    <SliderFilledTrack />
-                  </SliderTrack>
-                </Slider>
-              </Td>
-              <Td>
-                <DragHandleIcon />
-              </Td>
-            </Tr>
+                    ${current_price}
+                  </Td>
+                  <Td color="#EA3943">
+                    <TriangleDownIcon width="10px" height="6px" />
+                    <Box
+                      as="span"
+                      fontFamily="Inter"
+                      fontStyle="normal"
+                      fontWeight="600"
+                      fontSize="13px"
+                      lineHeight="16px"
+                    >
+                      {price_change_percentage_24h.toFixed(2)}%
+                    </Box>
+                  </Td>
+                  <Td color="#16C784" textAlign="end">
+                    <TriangleUpIcon width="10px" height="6px" />
+                    <Box
+                      as="span"
+                      fontFamily="Inter"
+                      fontStyle="normal"
+                      fontWeight="600"
+                      fontSize="13px"
+                      lineHeight="16px"
+                    >
+                      {price_change_percentage_7d_in_currency.toFixed(2)}%
+                    </Box>
+                  </Td>
+                  <Td
+                    fontFamily="Inter"
+                    fontStyle="normal"
+                    fontWeight="500"
+                    fontSize="14px"
+                    lineHeight="22px"
+                  >
+                    ${market_cap}
+                  </Td>
+                  <Td
+                    fontFamily="Inter"
+                    fontStyle="normal"
+                    fontWeight="500"
+                    letterSpacing="-0.035em"
+                  >
+                    <Box fontSize="14px" lineHeight="22px">
+                      ${total_volume}
+                    </Box>
+                    <Box fontSize="12px" lineHeight="15px">
+                      932,071 {symbol.toUpperCase()}
+                    </Box>
+                  </Td>
+                  <Td textAlign="end">
+                    <Box
+                      fontSize="14px"
+                      lineHeight="22px"
+                      fontFamily="Inter"
+                      fontStyle="normal"
+                      fontWeight="500"
+                      letterSpacing="-0.035em"
+                    >
+                      {circulating_supply.toFixed(0)} {symbol.toUpperCase()}
+                    </Box>
+                    <Slider
+                      aria-label="slider-ex-1"
+                      colorScheme="teal"
+                      defaultValue={30}
+                    >
+                      <SliderTrack>
+                        <SliderFilledTrack />
+                      </SliderTrack>
+                    </Slider>
+                  </Td>
+                  <Td>
+                    <DragHandleIcon />
+                  </Td>
+                </Tr>
+              )
+            )}
           </Tbody>
         </Table>
       </TableContainer>
