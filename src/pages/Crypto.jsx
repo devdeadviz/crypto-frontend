@@ -6,6 +6,13 @@ import {
   Tag,
   TagLabel,
   TagLeftIcon,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  TableContainer,
 } from '@chakra-ui/react';
 import { Card } from '../components';
 
@@ -90,6 +97,34 @@ const Crypto = () => {
           </TagLabel>
         </Tag>
       </HStack>
+      <TableContainer>
+        <Table variant="simple">
+          <Thead>
+            <Tr>
+              <Th>#</Th>
+              <Th>NAME</Th>
+              <Th>PRICE</Th>
+              <Th isNumeric>24H</Th>
+              <Th isNumeric>7D</Th>
+              <Th isNumeric>MARKET CAP</Th>
+              <Th isNumeric>VOLUME(24H)</Th>
+              <Th isNumeric>CIRCULATING SUPPLY</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            <Tr>
+              <Td>inches</Td>
+              <Td>millimetres (mm)</Td>
+              <Td isNumeric>25.4</Td>
+              <Td>inches</Td>
+              <Td>millimetres (mm)</Td>
+              <Td isNumeric>25.4</Td>
+              <Td>inches</Td>
+              <Td>millimetres (mm)</Td>
+            </Tr>
+          </Tbody>
+        </Table>
+      </TableContainer>
     </Box>
   );
 };
