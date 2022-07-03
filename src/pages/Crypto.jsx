@@ -53,11 +53,11 @@ const Crypto = () => {
   return (
     <Flex alignItems="center" justifyContent="center">
       <Box pt="35px" minHeight="100vh" maxWidth="228.3rem" width="90%">
-        <HStack spacing="24px">
+        <Flex flexWrap="wrap" flexDirection={{ base: 'column', md: 'row' }}>
           {cardData.map(data => (
             <Card key={data.id} data={data} />
           ))}
-        </HStack>
+        </Flex>
         <Heading as="h2" fontSize="24px" fontFamily="Inter" my={5}>
           Top 100 Cryptocurrencies by Market Cap
         </Heading>
@@ -173,8 +173,8 @@ const Crypto = () => {
             </Tbody>
           </Table>
         </TableContainer>
-        <Flex justifyContent="flex-end" my={8}>
-          <ButtonGroup variant="outline" spacing="2">
+        <Flex justifyContent={['center', 'flex-end']} my={8}>
+          <ButtonGroup variant="outline" spacing={['5px', '2']}>
             <Button disabled variant="solid" bg="#919EAB">
               <ChevronLeftIcon color="#C4CDD5" />
             </Button>

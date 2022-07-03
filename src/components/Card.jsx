@@ -7,9 +7,11 @@ const Card = ({ data }) => {
       bg="#FFFFFF"
       borderRadius="12px"
       boxShadow="0px 1.47737px 17.7284px 4.43211px rgba(208, 214, 227, 0.3);"
-      width="449.12px"
-      height="132.96px"
-      p={5}
+      width={['20rem', '28rem']}
+      height="8.3rem"
+      m={['10px', '1rem']}
+      flexShrink={0}
+      p={['4', '5']}
     >
       <Image
         boxSize="6.25rem"
@@ -18,9 +20,9 @@ const Card = ({ data }) => {
         src={data.image}
         alt={data.title}
       />
-      <Container>
+      <Container p={['5px']}>
         <Text
-          fontSize="lg"
+          fontSize={['sm', 'lg']}
           fontFamily="Arial"
           fontWeight="400"
           lineHeight="26.59px"
@@ -29,7 +31,7 @@ const Card = ({ data }) => {
           {data.title}
         </Text>
         <Text
-          fontSize="xl"
+          fontSize={['lg', 'xl']}
           fontFamily="Inter"
           fontWeight="500"
           lineHeight="26.59px"
