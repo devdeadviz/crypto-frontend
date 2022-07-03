@@ -24,6 +24,7 @@ import {
   SliderTrack,
   SliderFilledTrack,
   Flex,
+  Select,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { Card } from '../components';
@@ -70,56 +71,91 @@ const Crypto = () => {
       <Heading as="h2" fontSize="24px" fontFamily="Inter" my={5}>
         Top 100 Cryptocurrencies by Market Cap
       </Heading>
-      <HStack spacing="16px">
-        <Tag size="94px" p="8px">
-          <TagLeftIcon as={StarIcon} />
-          <TagLabel
-            size="12px"
-            fontFamily="Inter"
-            fontWeight="500"
-            lineHeight="18px"
-          >
-            Favourites
-          </TagLabel>
-        </Tag>
-        <Tag size="94px" p="8px">
-          <TagLabel
-            size="12px"
+      <Flex justifyContent="space-between" my={5}>
+        <HStack spacing="16px">
+          <Tag size="94px" p="8px">
+            <TagLeftIcon as={StarIcon} />
+            <TagLabel
+              size="12px"
+              fontFamily="Inter"
+              fontWeight="500"
+              lineHeight="18px"
+            >
+              Favourites
+            </TagLabel>
+          </Tag>
+          <Tag size="94px" p="8px">
+            <TagLabel
+              size="12px"
+              fontFamily="Inter"
+              fontStyle="normal"
+              fontWeight="600"
+              lineHeight="18px"
+              color="#3861FB"
+            >
+              CryptoCurrencies
+            </TagLabel>
+          </Tag>
+          <Tag size="94px" p="8px">
+            <TagLabel
+              size="12px"
+              fontFamily="Inter"
+              fontStyle="normal"
+              fontWeight="600"
+              lineHeight="18px"
+              color=" #5B667C"
+              letterSpacing="-0.03em"
+            >
+              DeFi
+            </TagLabel>
+          </Tag>
+          <Tag size="94px" p="8px">
+            <TagLabel
+              size="12px"
+              fontFamily="Inter"
+              fontStyle="normal"
+              fontWeight="600"
+              lineHeight="18px"
+              color=" #5B667C"
+            >
+              NFTs & Collectibles
+            </TagLabel>
+          </Tag>
+        </HStack>
+        <Flex alignItems="center">
+          <Box
             fontFamily="Inter"
             fontStyle="normal"
-            fontWeight="600"
+            fontWeight="400"
+            fontSize="14px"
             lineHeight="18px"
-            color="#3861FB"
-          >
-            CryptoCurrencies
-          </TagLabel>
-        </Tag>
-        <Tag size="94px" p="8px">
-          <TagLabel
-            size="12px"
-            fontFamily="Inter"
-            fontStyle="normal"
-            fontWeight="600"
-            lineHeight="18px"
-            color=" #5B667C"
+            textAlign="center"
             letterSpacing="-0.03em"
+            color="#5B667C"
+            flexShrink={0}
+            mx={1}
           >
-            DeFi
-          </TagLabel>
-        </Tag>
-        <Tag size="94px" p="8px">
-          <TagLabel
-            size="12px"
+            show rows
+          </Box>
+          <Select
+            bg="#EFF2F5"
+            borderRadius="8px"
             fontFamily="Inter"
             fontStyle="normal"
             fontWeight="600"
+            fontSize="12px"
             lineHeight="18px"
-            color=" #5B667C"
+            height="2rem"
           >
-            NFTs & Collectibles
-          </TagLabel>
-        </Tag>
-      </HStack>
+            <option value="100">100</option>
+            <option value="80">80</option>
+            <option value="60">60</option>
+            <option value="60">40</option>
+            <option value="60">20</option>
+            <option value="60">10</option>
+          </Select>
+        </Flex>
+      </Flex>
       <TableContainer>
         <Table variant="simple" height="80px">
           <Thead>
@@ -248,11 +284,7 @@ const Crypto = () => {
                     </Flex>
                   </Td>
                   <Td>
-                    <Avatar
-                      size="xs"
-                      name={name}
-                      src={image}
-                    />
+                    <Avatar size="xs" name={name} src={image} />
                     <Box
                       as="span"
                       width="max-content"
