@@ -7,7 +7,7 @@ import { Crypto } from './pages';
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Box bg="#e6e6e6">
+      <Box bg="#eff2f5">
         <Navbar />
         <Crypto />
       </Box>

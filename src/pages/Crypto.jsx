@@ -1,4 +1,4 @@
-import { StarIcon } from '@chakra-ui/icons';
+import { ChevronLeftIcon, ChevronRightIcon, StarIcon } from '@chakra-ui/icons';
 import {
   Box,
   Heading,
@@ -11,6 +11,9 @@ import {
   Tbody,
   TableContainer,
   Flex,
+  Show,
+  ButtonGroup,
+  Button,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { Card, SelectMenu, TableHead, TableRow } from '../components';
@@ -58,75 +61,77 @@ const Crypto = () => {
         <Heading as="h2" fontSize="24px" fontFamily="Inter" my={5}>
           Top 100 Cryptocurrencies by Market Cap
         </Heading>
-        <Flex justifyContent="space-between" my={5}>
-          <HStack spacing="16px">
-            <Tag size="94px" p="8px">
-              <TagLeftIcon as={StarIcon} />
-              <TagLabel
-                size="12px"
-                fontFamily="Inter"
-                fontWeight="500"
-                lineHeight="18px"
-              >
-                Favourites
-              </TagLabel>
-            </Tag>
-            <Tag size="94px" p="8px">
-              <TagLabel
-                size="12px"
+        <Show breakpoint="(min-width: 780px)">
+          <Flex justifyContent="space-between" my={5}>
+            <HStack spacing="16px">
+              <Tag size="94px" p="8px">
+                <TagLeftIcon as={StarIcon} />
+                <TagLabel
+                  size="12px"
+                  fontFamily="Inter"
+                  fontWeight="500"
+                  lineHeight="18px"
+                >
+                  Favourites
+                </TagLabel>
+              </Tag>
+              <Tag size="94px" p="8px">
+                <TagLabel
+                  size="12px"
+                  fontFamily="Inter"
+                  fontStyle="normal"
+                  fontWeight="600"
+                  lineHeight="18px"
+                  color="#3861FB"
+                >
+                  CryptoCurrencies
+                </TagLabel>
+              </Tag>
+              <Tag size="94px" p="8px">
+                <TagLabel
+                  size="12px"
+                  fontFamily="Inter"
+                  fontStyle="normal"
+                  fontWeight="600"
+                  lineHeight="18px"
+                  color=" #5B667C"
+                  letterSpacing="-0.03em"
+                >
+                  DeFi
+                </TagLabel>
+              </Tag>
+              <Tag size="94px" p="8px">
+                <TagLabel
+                  size="12px"
+                  fontFamily="Inter"
+                  fontStyle="normal"
+                  fontWeight="600"
+                  lineHeight="18px"
+                  color=" #5B667C"
+                >
+                  NFTs & Collectibles
+                </TagLabel>
+              </Tag>
+            </HStack>
+            <Flex alignItems="center">
+              <Box
                 fontFamily="Inter"
                 fontStyle="normal"
-                fontWeight="600"
+                fontWeight="400"
+                fontSize="14px"
                 lineHeight="18px"
-                color="#3861FB"
-              >
-                CryptoCurrencies
-              </TagLabel>
-            </Tag>
-            <Tag size="94px" p="8px">
-              <TagLabel
-                size="12px"
-                fontFamily="Inter"
-                fontStyle="normal"
-                fontWeight="600"
-                lineHeight="18px"
-                color=" #5B667C"
+                textAlign="center"
                 letterSpacing="-0.03em"
+                color="#5B667C"
+                flexShrink={0}
+                mx={1}
               >
-                DeFi
-              </TagLabel>
-            </Tag>
-            <Tag size="94px" p="8px">
-              <TagLabel
-                size="12px"
-                fontFamily="Inter"
-                fontStyle="normal"
-                fontWeight="600"
-                lineHeight="18px"
-                color=" #5B667C"
-              >
-                NFTs & Collectibles
-              </TagLabel>
-            </Tag>
-          </HStack>
-          <Flex alignItems="center">
-            <Box
-              fontFamily="Inter"
-              fontStyle="normal"
-              fontWeight="400"
-              fontSize="14px"
-              lineHeight="18px"
-              textAlign="center"
-              letterSpacing="-0.03em"
-              color="#5B667C"
-              flexShrink={0}
-              mx={1}
-            >
-              show rows
-            </Box>
-            <SelectMenu />
+                show rows
+              </Box>
+              <SelectMenu />
+            </Flex>
           </Flex>
-        </Flex>
+        </Show>
         <TableContainer>
           <Table variant="simple" height="80px">
             <Thead>
@@ -168,6 +173,21 @@ const Crypto = () => {
             </Tbody>
           </Table>
         </TableContainer>
+        <Flex justifyContent="flex-end" my={8}>
+          <ButtonGroup variant="outline" spacing="2">
+            <Button disabled variant="solid" bg="#919EAB">
+              <ChevronLeftIcon color="#C4CDD5" />
+            </Button>
+            <Button colorScheme="blue">1</Button>
+            <Button>2</Button>
+            <Button>...</Button>
+            <Button>9</Button>
+            <Button>10</Button>
+            <Button>
+              <ChevronRightIcon color="#C4CDD5" />
+            </Button>
+          </ButtonGroup>
+        </Flex>
       </Box>
     </Flex>
   );
