@@ -1,5 +1,4 @@
 import { Box, Flex, IconButton, Image } from '@chakra-ui/react';
-import { ColorModeSwitcher } from '../ColorModeSwitcher';
 import { SearchIcon, HamburgerIcon } from '@chakra-ui/icons';
 
 const Navbar = () => {
@@ -31,7 +30,6 @@ const Navbar = () => {
             bg="none"
             icon={<HamburgerIcon />}
           />
-          <ColorModeSwitcher />
         </Box>
       </Box>
     </Flex>
