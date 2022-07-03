@@ -14,6 +14,7 @@ import {
   SliderFilledTrack,
   Flex,
 } from '@chakra-ui/react';
+import { numberWithCommas } from '../utils';
 
 const TableRow = ({
   name,
@@ -81,10 +82,14 @@ const TableRow = ({
         lineHeight="22px"
         color="#000000"
       >
-        ${current_price}
+        ${numberWithCommas(current_price)}
       </Td>
-      <Td color="#EA3943">
-        <TriangleDownIcon width="10px" height="6px" />
+      <Td color={price_change_percentage_24h < 0 ? '#EA3943' : '#16C784'}>
+        {price_change_percentage_24h < 0 ? (
+          <TriangleDownIcon width="10px" height="6px" />
+        ) : (
+          <TriangleUpIcon width="10px" height="6px" />
+        )}
         <Box
           as="span"
           fontFamily="Inter"
@@ -93,11 +98,20 @@ const TableRow = ({
           fontSize="13px"
           lineHeight="16px"
         >
-          {price_change_percentage_24h.toFixed(2)}%
+          {Math.abs(price_change_percentage_24h.toFixed(2))}%
         </Box>
       </Td>
-      <Td color="#16C784" textAlign="end">
-        <TriangleUpIcon width="10px" height="6px" />
+      <Td
+        color={
+          price_change_percentage_7d_in_currency < 0 ? '#EA3943' : '#16C784'
+        }
+        textAlign="end"
+      >
+        {price_change_percentage_7d_in_currency < 0 ? (
+          <TriangleDownIcon width="10px" height="6px" />
+        ) : (
+          <TriangleUpIcon width="10px" height="6px" />
+        )}
         <Box
           as="span"
           fontFamily="Inter"
@@ -106,7 +120,7 @@ const TableRow = ({
           fontSize="13px"
           lineHeight="16px"
         >
-          {price_change_percentage_7d_in_currency.toFixed(2)}%
+          {Math.abs(price_change_percentage_7d_in_currency.toFixed(2))}%
         </Box>
       </Td>
       <Td
@@ -116,7 +130,7 @@ const TableRow = ({
         fontSize="14px"
         lineHeight="22px"
       >
-        ${market_cap}
+        ${numberWithCommas(market_cap)}
       </Td>
       <Td
         fontFamily="Inter"
@@ -125,7 +139,7 @@ const TableRow = ({
         letterSpacing="-0.035em"
       >
         <Box fontSize="14px" lineHeight="22px">
-          ${total_volume}
+          ${numberWithCommas(total_volume)}
         </Box>
         <Box fontSize="12px" lineHeight="15px">
           932,071 {symbol.toUpperCase()}
@@ -140,7 +154,8 @@ const TableRow = ({
           fontWeight="500"
           letterSpacing="-0.035em"
         >
-          {circulating_supply.toFixed(0)} {symbol.toUpperCase()}
+          {numberWithCommas(circulating_supply.toFixed(0))}
+          {symbol.toUpperCase()}
         </Box>
         <Slider aria-label="slider-ex-1" colorScheme="teal" defaultValue={30}>
           <SliderTrack>
