@@ -137,6 +137,7 @@ const TableRow = ({
         fontStyle="normal"
         fontWeight="500"
         letterSpacing="-0.035em"
+        textAlign="end"
       >
         <Box fontSize="14px" lineHeight="22px">
           ${numberWithCommas(total_volume)}

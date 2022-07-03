@@ -58,6 +58,7 @@ const TableHead = () => {
         fontSize="11px"
         lineHeight="18px"
         color="#000000"
+        textAlign="end"
       >
         7D
       </Th>
@@ -68,6 +69,7 @@ const TableHead = () => {
         fontSize="11px"
         lineHeight="18px"
         color="#000000"
+        textAlign="end"
       >
         MARKET CAP
       </Th>
@@ -78,6 +80,7 @@ const TableHead = () => {
         fontSize="11px"
         lineHeight="18px"
         color="#000000"
+        textAlign="end"
       >
         VOLUME(24H)
       </Th>
@@ -88,6 +91,7 @@ const TableHead = () => {
         fontSize="11px"
         lineHeight="18px"
         color="#000000"
+        textAlign="end"
       >
         CIRCULATING SUPPLY
       </Th>
